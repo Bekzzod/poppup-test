@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import './index.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Poppup from './components/Poppup';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dialogIsOpen: false,
+    }
+  } 
+  render() {
+    return (
+      <div className="app">
+        <button className="app__button" onClick={(e) => this.setState({dialogIsOpen: true})}>
+          Нажми на меня!
+        </button>
+        <Poppup isOpen={ this.state.dialogIsOpen } onClose={(e) => this.setState({dialogIsOpen: false})}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id similique error nulla quis, illum eum quasi modi illo voluptatum repellat quae dolor aliquid eveniet tenetur. Deleniti fuga fugit iusto dicta?
+        </Poppup>
+      </div>
+    )
+  }
 }
-
-export default App;
